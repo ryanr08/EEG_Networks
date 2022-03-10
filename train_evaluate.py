@@ -10,6 +10,8 @@ def train(model, optimizer, train_loader, epoch):
     running_loss = 0.0
     loss = None
     for i, data in enumerate(train_loader, 0):
+        # zero the parameter gradients
+        optimizer.zero_grad()
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
         labels = labels.float()
@@ -27,8 +29,8 @@ def train(model, optimizer, train_loader, epoch):
         loss.backward() # backward to get gradient values
         optimizer.step() # does the update
 
-        # zero the parameter gradients
-        optimizer.zero_grad()
+#         # zero the parameter gradients
+#         optimizer.zero_grad()
 
         # accumulate loss
         running_loss += loss.item()
