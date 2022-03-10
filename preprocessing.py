@@ -182,7 +182,4 @@ def dataloader_setup(X_train, y_train, X_valid, y_valid, X_test, y_test, batch_s
     test_dataset = Dataset(X_test, y_test)
     test_loader = DataLoader(test_dataset, len(test_dataset))
 
-    # package up
-    data_loaders = [train_loader, val_loader, test_loader]
-
-    return data_loaders
+    return train_loader, val_loader, test_loader
