@@ -10,31 +10,28 @@ def train(model, optimizer, train_loader, epoch):
     running_loss = 0.0
     loss = None
     for i, data in enumerate(train_loader, 0):
-        # zero the parameter gradients
-        optimizer.zero_grad()
+        
         # get the inputs; data is a list of [inputs, labels]
         inputs, labels = data
         labels = labels.float()
 
-
+        # zero the parameter gradients
+        optimizer.zero_grad()
+    
         # reshape inputs for time series convolution
         inputs = torch.transpose(inputs, 1, 3)
 
         # forward pass
         outputs = model(inputs)
         loss = F.cross_entropy(outputs, labels)
-        # loss = criterion(outputs, labels)
 
         # backward + optimize
         loss.backward() # backward to get gradient values
         optimizer.step() # does the update
 
-#         # zero the parameter gradients
-#         optimizer.zero_grad()
-
         # accumulate loss
         running_loss += loss.item()
-
+        
         # verbose
         if i % 10 == 0:
             print('Training Progress: \tEpoch {} [{}/{} ({:.2f}%)]\t\tLoss: {:.5f}'.format(
@@ -68,6 +65,7 @@ def evaluate(model, data_loader, mode):
             _, label_indeces = torch.max(labels.data, dim=1)
             total += labels.size(0)
             correct += (predicted == label_indeces).sum().item()
+        
         # average test_loss
         test_loss /= total
 
