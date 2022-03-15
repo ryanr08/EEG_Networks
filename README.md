@@ -9,7 +9,7 @@
 
 ## Abstract
 
-In this project, we wish to accurately classify EEG brain data in order to predict human activity. There are many useful applications for understanding human behavior through brain scans.  Convolutional neural networks (CNN), recurrent neural networks (RNN), and generative Adversarial neural networks (GAN) are popular and powerful tools used in the field of deep learning. In our project, we used these three neural network architectures to attempt to best classify EEG data sampled from four human tasks. We evaluated these networks on their own, as well as combining some or all of them. From our analysis, we learned that CNNs appear to be best for classifying EEG data, while only using an RNN performed fairly poorly. Combining the CNNs and the RNNs did not yield zero results, as only using the plain CNN had better accuracy. Lastly, the GAN-generated data added some improvement to our classification accuracy, especially when there was not adequate data for training.
+In this project, we wish to accurately classify EEG brain data in order to predict human activity. There are many useful applications for understanding human behavior through brain scans, and thus we wish to obtain accurate predictions. Convolutional neural networks (CNN), recurrent neural networks (RNN), and generative adversarial neural networks (GAN) are popular and powerful tools used in the field of deep learning. In our project, we used these three neural network architectures to attempt to best classify EEG data sampled from four human tasks. We evaluated these networks on their own, as well as combining some of them. From our analysis, we learned that CNNs appear to be best for classifying EEG data, while using an RNN performed fairly poorly. Combining the CNNs and the RNNs did not yield great results, as only using the plain CNN had better accuracy. Lastly, the GAN-generated data added some improvement to our classification accuracy, especially when there was not adequate data for training.
 
   
 
@@ -23,7 +23,6 @@ The data was taken via electrodes connecting to the scalp of the head and record
 Therefore, our main goal is to accurately classifying the EEG into one of the four classes.  A variety of methods were used in classifying EEG data, such as support vector machine, hidden Markov models, k-nearest neighbors, etc. [4] Since the signal-to-noise ratio of EEG data is usually very low, many preprocessing techniques were required for most of these methods. However, these techniques might have adverse effects on the classification results while NN requires little or no preprocessing procedures. [2]
 
   
-
 In this project, Several NN models were compared. We first start tackling the EEG classification problem with CNN to serve as a baseline of the whole project. After that, RNN including LSTM and GRU were implemented with the intuition that they would perform better on temporal problems. We also attempted various combinations of CNNs with LSTMs and GRUs. We then attempted to enlarge the dataset using GANs including WGAN and ACGAN to generate more data. We will compare the benefits of adding in the generated data as opposed to just training with the baseline data. In addition, these models were run not only on individual subject but also across all 9 datasets to observe the effect of individual differences on EEG data.
 
  ### CNN
